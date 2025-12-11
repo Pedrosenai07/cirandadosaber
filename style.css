@@ -1,0 +1,751 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* RESET E VARIÁVEIS DE COR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-green: #009400;
+    /* Verde Principal (Cor da Marca) */
+    --dark-green: #007000;
+    /* Verde Escuro para Títulos */
+    --accent-yellow: #FFC107;
+    /* Amarelo de Destaque (CTAs) */
+    --text-dark: #2c3e50;
+    /* Azul Marinho Escuro para texto e footer */
+    --light-bg: #f5f5f5;
+    /* Fundo suave */
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* CONTAINER CENTRALIZADOR */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 1. HEADER (NAVBAR) */
+.navbar {
+    width: 100%;
+    background-color: var(--white);
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-inner {
+    max-width: 1400px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /* Adicionado para garantir margem lateral */
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 100px;
+    /* Altura original */
+    width: auto;
+    margin-right: 15px;
+}
+
+.logo-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+.navbar-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 17px;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    color: var(--primary-green);
+}
+
+/* --- 2. SEÇÃO HERO (CARROSSEL) --- */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    /* Altura original */
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+    width: 33.333%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.banner-overlay {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* BOTOES E DOTS */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 50;
+    font-size: 1.5em;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--accent-yellow);
+}
+
+/* SEÇÕES GERAIS */
+.section {
+    padding: 80px 0;
+    /* Padding padrão */
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--dark-green);
+    font-family: 'Roboto Slab', serif;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* 3. SEÇÃO CTA ABAIXO DO HERO */
+.cta-below-hero-section {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.cta-below-hero-section h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.cta-below-hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Botão CTA Geral */
+.cta-button {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    white-space: nowrap;
+}
+
+.cta-button:hover {
+    background-color: #ffda6a;
+    transform: translateY(-2px);
+}
+
+.big-cta-button {
+    font-size: 1.1em;
+    padding: 18px 35px;
+}
+
+/* 4. SEÇÃO DIFERENCIAIS */
+.details-section {
+    background-color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 5px solid var(--primary-green);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card i {
+    font-size: 3em;
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-family: 'Roboto Slab', serif;
+    color: var(--dark-green);
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+/* 5. SEÇÃO ENSINO */
+.teaching-section {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+.teaching-section h2 {
+    color: var(--accent-yellow);
+}
+
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 colunas em desktop */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.teaching-item {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Fundo sutil */
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.teaching-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.teaching-item .icon-box {
+    background-color: var(--primary-green);
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.teaching-item i {
+    font-size: 2.5em;
+    color: var(--white);
+}
+
+.teaching-item h3 {
+    font-family: 'Roboto Slab', serif;
+    color: var(--accent-yellow);
+    margin: 10px 0;
+    font-size: 1.3em;
+}
+
+.teaching-item p {
+    font-size: 0.95em;
+    color: #eee;
+}
+
+/* 6. SEÇÃO TESTEMUNHOS */
+.testimonials-section {
+    background-color: var(--light-bg);
+}
+
+.testimonials-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    flex: 1;
+    text-align: left;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: relative;
+    border-left: 5px solid var(--primary-green);
+}
+
+.testimonial-card p {
+    font-size: 1.15em;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.client-info {
+    font-size: 0.9em;
+}
+
+.client-name {
+    display: block;
+    color: var(--dark-green);
+    font-weight: 700;
+}
+
+.client-role {
+    color: #888;
+}
+
+/* 7. SEÇÃO CTA FINAL */
+.final-cta-section {
+    padding: 60px 0;
+    background: linear-gradient(90deg, var(--dark-green) 0%, var(--primary-green) 100%);
+    color: var(--white);
+}
+
+.cta-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.cta-flex h3 {
+    font-size: 2em;
+    font-family: 'Roboto Slab', serif;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.cta-flex p {
+    flex-grow: 1;
+    margin: 0 40px;
+}
+
+/* 8. RODAPÉ */
+.footer {
+    background-color: var(--text-dark);
+    color: #ccc;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2.5fr;
+    /* 3 colunas em desktop */
+    gap: 30px;
+    padding: 50px 0;
+    text-align: left;
+}
+
+.footer-col h3 {
+    color: var(--accent-yellow);
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.brand-col .logo-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.brand-col .logo-img {
+    height: 80px;
+    margin-right: 10px;
+}
+
+.brand-col .logo-text {
+    font-size: 1.8em;
+    color: var(--white);
+}
+
+.contact-col p,
+.location-col p {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.contact-col i,
+.location-col i {
+    color: var(--accent-yellow);
+    margin-right: 10px;
+    margin-top: 5px;
+    /* Alinhamento visual com o texto */
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.map-container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.address-text a {
+    color: var(--accent-yellow);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.address-text a:hover {
+    color: var(--white);
+}
+
+.copyright {
+    border-top: 1px solid #444;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--accent-yellow);
+}
+
+
+/* =======================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ======================================================= */
+
+/* 💻 Ajustes para Tablets e Desktops Menores (Max-width 992px) */
+@media (max-width: 992px) {
+
+    /* HEADER */
+    .navbar-logo img {
+        height: 70px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .navbar-menu ul {
+        gap: 15px;
+    }
+
+    .navbar-menu a {
+        font-size: 16px;
+    }
+
+    /* HERO */
+    .hero-carousel {
+        height: 450px;
+    }
+
+    /* SEÇÕES EM GERAL */
+    .section {
+        padding: 60px 0;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
+
+    .cta-below-hero-section h1 {
+        font-size: 2.2em;
+    }
+
+    .big-cta-button {
+        padding: 15px 30px;
+        font-size: 1em;
+    }
+
+    /* SEÇÃO ENSINO - De 4 para 2 colunas */
+    .teaching-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* TESTEMUNHOS - Quebra para 1 coluna */
+    .testimonials-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* CTA FINAL - Quebra de linha */
+    .cta-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-flex h3 {
+        margin-right: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .cta-flex p {
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        /* Botão ocupa a largura toda */
+        max-width: 350px;
+    }
+
+    /* RODAPÉ - De 3 para 2 colunas */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-col.location-col {
+        grid-column: span 2;
+    }
+}
+
+/* 📱 Ajustes para Celulares (Max-width 600px) */
+@media (max-width: 600px) {
+
+    /* CONTAINER */
+    .container {
+        padding: 0 10px;
+    }
+
+    /* HEADER - Menu em coluna */
+    .navbar-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 15px;
+    }
+
+    .navbar-logo {
+        margin-bottom: 10px;
+    }
+
+    .navbar-logo img {
+        height: 50px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .navbar-menu {
+        width: 100%;
+    }
+
+    .navbar-menu ul {
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .navbar-menu a {
+        padding: 5px 0;
+        font-size: 15px;
+    }
+
+    /* HERO */
+    .hero-carousel {
+        height: 300px;
+    }
+
+    .prev-btn,
+    .next-btn {
+        padding: 8px 10px;
+        font-size: 1.2em;
+    }
+
+    .prev-btn {
+        left: 5px;
+    }
+
+    .next-btn {
+        right: 5px;
+    }
+
+    /* CTA ABAIXO DO HERO */
+    .cta-below-hero-section h1 {
+        font-size: 1.6em;
+    }
+
+    .cta-below-hero-section p {
+        font-size: 1em;
+    }
+
+    .big-cta-button {
+        font-size: 0.9em;
+        padding: 12px 25px;
+    }
+
+    /* SEÇÕES EM GERAL */
+    .section {
+        padding: 40px 0;
+    }
+
+    .section h2 {
+        font-size: 1.8em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+
+    /* SEÇÃO DIFERENCIAIS */
+    .features-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em celular */
+    }
+
+    /* SEÇÃO ENSINO */
+    .teaching-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em celular */
+    }
+
+    .teaching-item {
+        padding: 15px;
+    }
+
+    /* RODAPÉ */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em celular */
+        padding: 30px 0;
+        text-align: center;
+        /* Centraliza conteúdo do rodapé */
+    }
+
+    .footer-col {
+        margin-bottom: 20px;
+    }
+
+    .footer-col.location-col {
+        grid-column: span 1;
+    }
+
+    .brand-col .logo-box {
+        justify-content: center;
+        /* Centraliza logo e texto */
+    }
+
+    .contact-col p,
+    .location-col p {
+        justify-content: center;
+        /* Centraliza os ícones/texto de contato */
+        text-align: left;
+        /* Garante que o texto se alinhe, mas o bloco é centralizado */
+    }
+}
